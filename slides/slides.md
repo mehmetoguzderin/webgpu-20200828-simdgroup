@@ -7,21 +7,22 @@ paginate: true
 _paginate: false
 ---
 
-![bg](./assets/gradient.jpg)
+# <!--fit--> SIMD operations in WebGPU for ML
 
-# <!--fit--> Marp CLI example
+How subgroup operations will help ML in the browser
 
-Hosting Marp slide deck on the web
-
-https://github.com/yhatt/marp-cli-example
-
-<style scoped>a { color: #eee; }</style>
+<!-- _footer: "Mehmet **Oguz** Derin **@mehmetoguzderin**" -->
 
 <!-- This is presenter note. You can write down notes through HTML comment. -->
 
 ---
 
-![Marp bg 60%](https://raw.githubusercontent.com/marp-team/marp/master/marp.png)
+# Table of Contents
+
++ What are subgroups?
++ What will be available?
++ How they impact ML applications?
++ When can we get them?
 
 ---
 
@@ -46,21 +47,24 @@ https://github.com/yhatt/marp-cli-example
 
 ---
 
-![bg right 60%](https://www.netlify.com/img/press/logos/logomark.svg)
+![bg right 60%](mehmetoguzderin.png)
 
-## **[Netlify](https://www.netlify.com/)**
+## **Thank you!**
 
-#### Ready to write & host your deck!
+Presented by
 
-[![Deploy to Netlify h:1.5em](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/yhatt/marp-cli-example)
+Mehmet **Oguz** Derin
+
+<!-- _footer: "Twitter: [**@mehmetoguzderin**](https://twitter.com/mehmetoguzderin)" -->
 
 ---
 
 ![bg right 60%](https://raw.githubusercontent.com/yhatt/marp-cli-example/master/vercel.svg?sanitize=true)
 
-## **[Vercel](https://vercel.com/)**
 
-#### Ready to write & host your deck!
+| One | Two |
+|-----|-----|
+| Hey!|Hello!|
 
 [![Deploy to Vercel h:1.5em](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/yhatt/marp-cli-example)
 
