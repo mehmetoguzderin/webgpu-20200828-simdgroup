@@ -13,69 +13,143 @@ How subgroup operations will help ML in the browser
 
 <!-- _footer: "Mehmet **Oguz** Derin **@mehmetoguzderin**" -->
 
-<!-- This is presenter note. You can write down notes through HTML comment. -->
-
 ---
 
 # Table of Contents
 
-+ What are subgroups?
-+ What will be available?
-+ How they impact ML applications?
-+ When can we get them?
++ Concepts
++ Impact on ML
++ Web Interface
++ Operations
++ Hardware Support
++ Roadmap
 
 ---
 
-![bg](#123)
-![](#fff)
+# Subgroups
 
-##### <!--fit--> [Marp CLI](https://github.com/marp-team/marp-cli) + [GitHub Pages](https://github.com/pages) | [Netlify](https://www.netlify.com/) | [Vercel](https://vercel.com/)
++ Subdivision of threadgroups
 
-##### <!--fit--> 👉 The easiest way to host<br />your Marp deck on the web
++ Also named as **simdgroups**, **warps**, **waves**
+
++ Subgroup operations make sharing and reducing data across threads in a subgroup **measurably faster**
+
++ We can have these operations in WGSL (WebGPU Shading Language)
 
 ---
 
-![bg right 60%](https://icongr.am/octicons/mark-github.svg)
+![bg 75%](nvidia-register-cache-0.jpg)
 
-## **[GitHub Pages](https://github.com/pages)**
+<!-- _footer: "https://developer.nvidia.com/blog/register-cache-warp-cuda/" -->
 
-#### Ready to write & host your deck!
+---
 
-[![Fork on GitHub h:1.5em](https://img.shields.io/github/forks/yhatt/marp-cli-example?label=Fork&style=social)](https://github.com/yhatt/marp-cli-example)
+![bg 90%](amd-rdna-0.png)
 
-<!-- _footer: ":information_source: Require to pass ACCESS_TOKEN as secret." -->
+<!-- _footer: "https://www.amd.com/system/files/documents/rdna-whitepaper.pdf" -->
+
+---
+
+# Impact on ML
+
++ Exploratory Data Analysis
++ Model Fine Tuning
++ Edge Inference
+
+How:
++ ~2x reduced runtime
++ Reduced power consumption
++ Intuitive calculations [0]
+
+<!-- _footer: "[0] It is important to note that GPU has no atomics or advisable locking mechanism for floating point numbers." -->
+
+---
+
+# Web Interface
+
+Subgroup operations exposed to web are
++ Compute stage only
++ Active threads only
++ Non-uniform
+
+---
+
+![bg 90%](nvidia-using-warp-0.png)
+
+<!-- _footer: "https://developer.nvidia.com/blog/using-cuda-warp-level-primitives/" -->
+
+---
+
+| Basic Operations |
+|:---|
+| `subgroup_size` |
+| `subgroup_invocation_idx` |
+| `subgroupIsFirst` |
+
+<!-- _footer: "https://mehmetoguzderin.github.io/webgpu/wgsl.html#subgroup-builtin-functions" -->
+
+---
+
+| Vote Operations |
+|:---|
+| `subgroupAll` |
+| `subgroupAny` |
+
+<!-- _footer: "https://mehmetoguzderin.github.io/webgpu/wgsl.html#subgroup-builtin-functions" -->
+
+---
+
+| Arithmetic Operations |
+|:---|
+| `subgroupAdd` |
+| `subgroupMul` |
+| `subgroupMin` |
+| `subgroupMax` |
+| `subgroupAnd` |
+| `subgroupOr` |
+| `subgroupXor` |
+
+<!-- _footer: "https://mehmetoguzderin.github.io/webgpu/wgsl.html#subgroup-builtin-functions" -->
+
+---
+
+| Arithmetic Prefix Operations |
+|:---|
+| `subgroupPrefixAdd` |
+| `subgroupPrefixMul` |
+
+<!-- _footer: "https://mehmetoguzderin.github.io/webgpu/wgsl.html#subgroup-builtin-functions" -->
+
+---
+
+| Ballot Operations |
+|:---|
+| `subgroupBallot` |
+| `subgroupBroadcastFirst` |
+
+<!-- _footer: "https://mehmetoguzderin.github.io/webgpu/wgsl.html#subgroup-builtin-functions" -->
+
+---
+
+# Hardware Support
+
+**Desktop:** available everywhere
+**Mobile:** most of the next generation chips support
+
+---
+
+# Roadmap
+
+Raised concerns mostly fall out-of-scope for this PR, not blockers for adoption as-is
+
+Technically can make into MVP as a good addition in the standard library of WGSL
 
 ---
 
 ![bg right 60%](mehmetoguzderin.png)
 
-## **Thank you!**
+## **Thanks for your attention!**
 
-Presented by
-
-Mehmet **Oguz** Derin
+You can check out the PR itself [#954](https://github.com/gpuweb/gpuweb/pull/954)
 
 <!-- _footer: "Twitter: [**@mehmetoguzderin**](https://twitter.com/mehmetoguzderin)" -->
-
----
-
-![bg right 60%](https://raw.githubusercontent.com/yhatt/marp-cli-example/master/vercel.svg?sanitize=true)
-
-
-| One | Two |
-|-----|-----|
-| Hey!|Hello!|
-
-[![Deploy to Vercel h:1.5em](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/yhatt/marp-cli-example)
-
----
-
-### <!--fit--> :ok_hand:
-
----
-
-![bg 40% opacity blur](https://avatars1.githubusercontent.com/u/3993388?v=4)
-
-### Created by Yuki Hattori ([@yhatt](https://github.com/yhatt))
-
-https://github.com/yhatt/marp-cli-example
