@@ -34,6 +34,8 @@ How subgroup operations will help ML in the browser
 
 + Subgroup operations make sharing and reducing data across threads in a subgroup **measurably faster**
 
++ Their size vary across GPUs
+
 + We can have these operations in WGSL (WebGPU Shading Language)
 
 ---
