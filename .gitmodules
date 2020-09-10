@@ -1,0 +1,9 @@
+[submodule "samples/volk"]
+	path = samples/volk
+	url = https://github.com/zeux/volk
+[submodule "samples/Vulkan-Headers"]
+	path = samples/Vulkan-Headers
+	url = https://github.com/KhronosGroup/Vulkan-Headers
+[submodule "samples/VulkanMemoryAllocator"]
+	path = samples/VulkanMemoryAllocator
+	url = https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator

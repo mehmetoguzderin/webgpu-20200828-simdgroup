@@ -1,0 +1,46 @@
+#version 450
+
+#extension GL_KHR_shader_subgroup_basic: enable
+#extension GL_KHR_shader_subgroup_vote: enable
+#extension GL_KHR_shader_subgroup_ballot: enable
+#extension GL_KHR_shader_subgroup_arithmetic: enable
+
+layout(local_size_x=256, local_size_y=1, local_size_z=1) in;
+
+layout(std430, set=0, binding=0) buffer layout_input_data {
+  vec4 input_data[];
+};
+
+layout(std430, set=0, binding=1) buffer layout_intermediary_data {
+  vec4[2] intermediary_data[];
+};
+
+layout(std430, set=0, binding=2) buffer layout_output_data {
+  vec4 output_data[];
+};
+
+shared vec4 shared_data[256][2];
+
+void main() {
+	vec4 data_intermediary_minimum =
+    intermediary_data[gl_LocalInvocationID.x][0];
+	vec4 data_intermediary_maximum =
+    intermediary_data[gl_LocalInvocationID.x][1];
+  vec4 data_minimum = subgroupMin(data_intermediary_minimum);
+  vec4 data_maximum = subgroupMax(data_intermediary_maximum);
+  if (gl_SubgroupInvocationID == 0) {
+    shared_data[gl_LocalInvocationID.x][0] =
+      data_minimum;
+    shared_data[gl_LocalInvocationID.x][1] =
+      data_maximum;
+  }
+  groupMemoryBarrier();
+  if (gl_LocalInvocationID.x == 0) {
+    for (uint i = 0; i < 256; i += gl_SubgroupSize) {
+      data_minimum = min(data_minimum, shared_data[i][0]);
+      data_maximum = max(data_maximum, shared_data[i][1]);
+    }
+    output_data[0] = data_minimum;
+    output_data[1] = data_maximum;
+  }
+}
