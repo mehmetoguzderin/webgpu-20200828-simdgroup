@@ -18,6 +18,6 @@ Please check out respective folders for the build instructions.
 
 ## Comparison
 
-Data built on the samples shows that SIMD is at least 2x **faster** than other methods.
+Data built on the samples shows that SIMD executes at least 2x **faster** than other methods in this case. But it is important to note that **atomics _do not support_ floating-point operations**, numerical loss happens with them.
 
 ![](./docs/webgpu-20200910-simdgroup.png)
