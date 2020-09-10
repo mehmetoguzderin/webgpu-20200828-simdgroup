@@ -22,7 +22,7 @@ layout(std430, set=0, binding=2) buffer layout_output_data {
 shared vec4 shared_data[256][2];
 
 void main() {
-	uint index = gl_GlobalInvocationID.x;
+  uint index = gl_GlobalInvocationID.x;
   vec4 data = input_data[index];
   vec4 data_minimum = subgroupMin(data);
   vec4 data_maximum = subgroupMax(data);
