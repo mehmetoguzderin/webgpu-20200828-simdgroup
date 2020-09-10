@@ -22,9 +22,9 @@ layout(std430, set=0, binding=2) buffer layout_output_data {
 shared vec4 shared_data[256][2];
 
 void main() {
-	vec4 data_intermediary_minimum =
+  vec4 data_intermediary_minimum =
     intermediary_data[gl_LocalInvocationID.x][0];
-	vec4 data_intermediary_maximum =
+  vec4 data_intermediary_maximum =
     intermediary_data[gl_LocalInvocationID.x][1];
   vec4 data_minimum = subgroupMin(data_intermediary_minimum);
   vec4 data_maximum = subgroupMax(data_intermediary_maximum);
